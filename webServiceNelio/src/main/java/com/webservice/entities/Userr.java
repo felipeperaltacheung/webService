@@ -14,7 +14,6 @@ import java.io.Serializable;
 public class Userr implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
     private String name;
     private String email;
