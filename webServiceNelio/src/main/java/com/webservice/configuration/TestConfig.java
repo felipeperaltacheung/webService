@@ -11,8 +11,10 @@ import java.util.Arrays;
 @Configuration
 public class TestConfig implements CommandLineRunner {
 
+
     @Autowired
     private UserrRepository userrRepository;
+
 
     @Override
     public void run(String... args) throws Exception {
