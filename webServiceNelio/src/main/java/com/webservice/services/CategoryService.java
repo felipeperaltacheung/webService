@@ -10,18 +10,18 @@ import java.util.Optional;
 @Service
 public class CategoryService {
 
-    private final CategoryRepository CategoryRepository;
+    private final CategoryRepository categoryRepository;
 
-    public CategoryService(CategoryRepository CategoryRepository) {
-        this.CategoryRepository = CategoryRepository;
+    public CategoryService(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
     }
 
     public List<Category> findAll(){
-        return CategoryRepository.findAll();
+        return categoryRepository.findAll();
     }
 
     public Optional<Category> findById(Long id){
-        return CategoryRepository.findById(id);
+        return categoryRepository.findById(id);
     }
 
 }
