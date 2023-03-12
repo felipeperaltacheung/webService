@@ -1,10 +1,10 @@
 package com.webservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.webservice.entities.pk.OrdemItemPK;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import org.aspectj.weaver.ast.Or;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -15,11 +15,11 @@ public class OrderItem implements Serializable {
 
 
     @EmbeddedId
-    private OrdemItemPK id;
+    private OrdemItemPK id = new OrdemItemPK();
     private Integer quantity;
     private Double price;
 
-    private OrderItem(){
+    public OrderItem(){
     }
 
     public OrderItem(Order order, Product product, Integer quantity, Double price) {
@@ -29,6 +29,7 @@ public class OrderItem implements Serializable {
         this.price = price;
     }
 
+    @JsonIgnore
     public Order getOrder(){
         return id.getOrder();
     }

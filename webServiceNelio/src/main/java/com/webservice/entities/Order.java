@@ -7,6 +7,8 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -24,6 +26,9 @@ public class Order implements Serializable {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Userr client;
+
+    @OneToMany(mappedBy = "id.order")
+    private Set<OrderItem> items = new HashSet<>();
 
     public Order(Long id, Instant moment, OrderStatus orderStatus, Userr client) {
         this.id = id;
@@ -50,6 +55,10 @@ public class Order implements Serializable {
 
     public OrderStatus getOrderStatus() {
         return OrderStatus.valueOf(orderStatus);
+    }
+
+    public Set<OrderItem> getItems(){
+        return items;
     }
 
     public void setOrderStatus(OrderStatus orderStatus) {
